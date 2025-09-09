@@ -7,6 +7,7 @@ const app = express();
 app.use(express.static('public'));
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public"));
 
 // Auth
 const authRoutes = require('./routes/auth');
@@ -52,3 +53,4 @@ app.get('/', (req, res) => {
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
