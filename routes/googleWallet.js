@@ -3,21 +3,21 @@ const express = require("express");
 const { GoogleAuth } = require("google-auth-library");
 const jwt = require("jsonwebtoken");
 const pool = require("../config/db");
-const serviceAccount = require("../config/wallet-service-account.json");
 
 const router = express.Router();
 const issuerId = "3388000000022946333"; // your Issuer ID
+
+// Parse service account JSON from environment
+const serviceAccount = JSON.parse(process.env.WALLET_SERVICE_ACCOUNT);
 
 router.get("/generate-link/:customerId", async (req, res) => {
   const { customerId } = req.params;
 
   try {
-    // Get customer
     const result = await pool.query("SELECT * FROM customers WHERE id = $1", [customerId]);
     const customer = result.rows[0];
     if (!customer) return res.status(404).json({ error: "Customer not found" });
 
-    // Loyalty object
     const loyaltyObject = {
       id: `${issuerId}.${customerId}`,
       classId: `${issuerId}.loyalty_class`,
@@ -36,7 +36,6 @@ router.get("/generate-link/:customerId", async (req, res) => {
       }
     };
 
-    // Build Save URL
     const payload = {
       iss: serviceAccount.client_email,
       aud: "google",
@@ -55,5 +54,3 @@ router.get("/generate-link/:customerId", async (req, res) => {
 });
 
 module.exports = router;
-
-
