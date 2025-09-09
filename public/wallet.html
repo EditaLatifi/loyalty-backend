@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body style="display: flex; flex-direction: column; align-items: center; margin-top: 50px; font-family: sans-serif;">
+    <h2>Join Coffee King</h2>
+    <img id="qr" style="width: 280px; border: 1px solid #ccc;" />
+    <p><a id="download" target="_blank">📲 Add to Wallet</a></p>
+
+    <script>
+      const businessId = 1; // ← Change this as needed
+      fetch(`/api/customers/generate-wallet-link/${businessId}`)
+        .then((res) => res.json())
+        .then(({ qrCode, walletLink }) => {
+          document.getElementById('qr').src = qrCode;
+          document.getElementById('download').href = walletLink;
+        });
+    </script>
+  </body>
+</html>

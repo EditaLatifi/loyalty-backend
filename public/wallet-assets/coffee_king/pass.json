@@ -1,0 +1,30 @@
+{
+  "description": "Coffee King Rewards",
+  "formatVersion": 1,
+  "organizationName": "Coffee King",
+  "passTypeIdentifier": "pass.com.example.loyalty",
+  "teamIdentifier": "TEAMID1234",
+  "backgroundColor": "rgb(255,255,255)",
+  "logoText": "Coffee King Loyalty",
+  "barcode": {
+    "message": "123456",
+    "format": "PKBarcodeFormatQR",
+    "messageEncoding": "iso-8859-1"
+  },
+  "generic": {
+    "primaryFields": [
+      {
+        "key": "points",
+        "label": "Points",
+        "value": "0"
+      }
+    ],
+    "secondaryFields": [
+      {
+        "key": "joined",
+        "label": "Member Since",
+        "value": "2025"
+      }
+    ]
+  }
+}

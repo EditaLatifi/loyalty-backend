@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.com.loyalito.loyalty",
+  "teamIdentifier": "VDT8R44NHT",
+  "organizationName": "Pizzaiolo by B&C",
+  "serialNumber": "123456",
+  "description": "Loyalty Card",
+  "logoText": "Pizzaiolo Loyalty",
+  "foregroundColor": "rgb(255,255,255)",
+  "backgroundColor": "rgb(34,139,34)",
+
+  "storeCard": {
+    "primaryFields": [
+      {
+        "key": "points",
+        "label": "Points",
+        "value": "0"
+      }
+    ],
+    "secondaryFields": [
+      {
+        "key": "member",
+        "label": "Member",
+        "value": "Coffee King"
+      }
+    ]
+  },
+
+  "barcode": {
+    "message": "LOYALTY-123456",
+    "format": "PKBarcodeFormatQR",
+    "messageEncoding": "iso-8859-1"
+  },
+
+  "locations": [
+    {
+      "latitude": 50.0797,
+      "longitude": 14.4500,
+      "relevantText": "Visit us at Seifertova 1840/6, Prague"
+    }
+  ],
+
+  "backFields": [
+    {
+      "key": "address",
+      "label": "Address",
+      "value": "Seifertova 1840/6, Prague 130 00, Czech Republic"
+    },
+    {
+      "key": "email",
+      "label": "Contact",
+      "value": "info@by-bc.com"
+    }
+  ]
+}
