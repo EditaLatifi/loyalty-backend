@@ -7,7 +7,6 @@ const app = express();
 app.use(express.static('public'));
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
 
 // Auth
 const authRoutes = require('./routes/auth');
@@ -22,13 +21,13 @@ app.use('/api/notifications', notifRoutes);
 
 // Wallet integrations
 const googleWalletRoutes = require('./routes/googleWallet');
-app.use('/google-wallet', googleWalletRoutes);   // ✅ FIXED
+app.use('/google-wallet', googleWalletRoutes);
 
 const appleWalletRoutes = require("./routes/appleWallet");
-app.use("/apple-wallet", appleWalletRoutes);     // ✅ only once
+app.use("/apple-wallet", appleWalletRoutes);
 
 const walletRoutes = require('./routes/wallet');
-app.use('/api/wallet', walletRoutes);            // ✅ only once
+app.use('/api/wallet', walletRoutes);
 
 // Scan
 const scanRoute = require('./routes/scan');
@@ -53,4 +52,3 @@ app.get('/', (req, res) => {
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-
