@@ -1,9 +1,12 @@
-const { Pool } = require('pg');
-require('dotenv').config(); // make sure you load .env
+const { Pool } = require("pg");
+require("dotenv").config();
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, // uses the full URL from .env
-  ssl: false // for local development, disable SSL
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // required for Supabase on Render
+  },
 });
 
 module.exports = pool;
+
