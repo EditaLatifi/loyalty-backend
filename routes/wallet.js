@@ -9,7 +9,8 @@ const pool = require("../config/db");
  *  PUBLIC_ORIGIN=https://by-bc.com          // ku shërben backend-i
  *  FORM_REQUIRE_EMAIL=true/false            // nese do te detyrosh email
  */
-const ORIGIN = process.env.PUBLIC_ORIGIN || "http://localhost:5000";
+//const ORIGIN = process.env.PUBLIC_ORIGIN || "http://localhost:5000";
+const ORIGIN = "https://loyalty-backend-mu.vercel.app";
 
 /* ----------------------------- Helpers ------------------------------ */
 function isAppleUA(ua = "") {
