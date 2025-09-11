@@ -39,7 +39,7 @@ router.get("/business-qr/:businessId.png", async (req, res) => {
     return res.status(400).send("invalid businessId");
   }
   try {
-    const walletLink = `${ORIGIN}/wallet/start/${businessId}`;
+const walletLink = `${ORIGIN}/api/wallet/start/${businessId}`;
     res.type("image/png");
     await QRCode.toFileStream(res, walletLink, { margin: 1, scale: 6 });
   } catch (err) {
