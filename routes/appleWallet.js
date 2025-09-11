@@ -115,14 +115,20 @@ router.get("/generate/:customerId", async (req, res) => {
         },
       }
     );
+// 3) Barkodi/QR – use JSON payload for scanning in shop
+const scanPayload = JSON.stringify({
+  customer_id: c.customer_id,
+  business_id: c.business_id,
+});
 
 pass.barcodes = [
   {
-    message: `${ORIGIN}/api/scan?serial=${serialNumber}&business_id=${c.business_id}`,
+    message: scanPayload, 
     format: "PKBarcodeFormatQR",
     messageEncoding: "iso-8859-1",
-  }, 
-    ];
+  },
+];
+
 
     // 4) (opsionale) vendos një ikonë dinamike sipas business-it, etj.
     // p.sh. pass.addBuffer("logo.png", fs.readFileSync(pathToLogo));

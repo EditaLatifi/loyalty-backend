@@ -89,17 +89,18 @@ router.get("/start/:businessId", async (req, res) => {
   </head>
   <body>
     <h2>Join Loyalty</h2>
-    <form action="/wallet/register" method="POST">
-      <input type="hidden" name="business_id" value="${businessId}"/>
-      <label>Name</label>
-      <input type="text" name="name" required placeholder="Your name"/>
-      <label>Email ${requireEmail ? "(required)" : "(optional)"} </label>
-      <input type="email" name="email" ${requireEmail ? "required" : ""} placeholder="you@example.com"/>
-      <label>Phone (optional)</label>
-      <input type="tel" name="phone" placeholder="+383..."/>
-      <button type="submit">Join & Get Card</button>
-      <div class="hint">We’ll add the card to Apple/Google Wallet automatically.</div>
-    </form>
+   <form action="/api/wallet/register" method="POST">
+  <input type="hidden" name="business_id" value="${businessId}"/>
+  <label>Name</label>
+  <input type="text" name="name" required placeholder="Your name"/>
+  <label>Email ${requireEmail ? "(required)" : "(optional)"} </label>
+  <input type="email" name="email" ${requireEmail ? "required" : ""} placeholder="you@example.com"/>
+  <label>Phone (optional)</label>
+  <input type="tel" name="phone" placeholder="+383..."/>
+  <button type="submit">Join & Get Card</button>
+  <div class="hint">We’ll add the card to Apple/Google Wallet automatically.</div>
+</form>
+
   </body>
 </html>
   `);
@@ -186,12 +187,14 @@ router.post("/register", express.urlencoded({ extended: true }), async (req, res
     }
 
     // 3) ridrejtim sipas platformës
-    const ua = req.headers["user-agent"] || "";
-    if (isAppleUA(ua)) {
-      return res.redirect(302, `/apple-wallet/generate/${customer.id}`);
-    } else {
-      return res.redirect(302, `/google-wallet/generate-link/${customer.id}`);
-    }
+ // 3) ridrejtim sipas platformës
+const ua = req.headers["user-agent"] || "";
+if (isAppleUA(ua)) {
+  return res.redirect(302, `${ORIGIN}/apple-wallet/generate/${customer.id}`);
+} else {
+  return res.redirect(302, `${ORIGIN}/google-wallet/generate-link/${customer.id}`);
+}
+
   } catch (err) {
     console.error("[register] error:", err);
     return res.status(500).send("Registration failed");
