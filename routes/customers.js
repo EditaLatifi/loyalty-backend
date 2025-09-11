@@ -75,16 +75,26 @@ router.post('/scan', async (req, res) => {
   }
 });
 
-// Get all customers
+// Get all customers of the logged-in business
 router.get('/', async (req, res) => {
+  const { business_id } = req.query; // read from query string
+
+  if (!business_id) {
+    return res.status(400).json({ error: "business_id required" });
+  }
+
   try {
-    const result = await pool.query('SELECT * FROM customers');
+    const result = await pool.query(
+      'SELECT * FROM customers WHERE business_id = $1',
+      [business_id]
+    );
     res.json(result.rows);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to fetch customers' });
   }
 });
+
 
 // Add new customer manually
 router.post('/add', async (req, res) => {
