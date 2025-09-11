@@ -136,7 +136,7 @@ router.post("/register", express.urlencoded({ extended: true }), async (req, res
       customer = q.rows[0];
       if (!customer) {
         const ins = await pool.query(
-          `INSERT INTO customers (business_id, name, email, phone)
+          `INSERT INTO customers (business_id, name, email)
            VALUES ($1,$2,$3,$4) RETURNING *`,
           [businessId, name, email, phone || null]
         );
