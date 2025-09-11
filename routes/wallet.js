@@ -89,7 +89,7 @@ router.get("/start/:businessId", async (req, res) => {
   </head>
   <body>
     <h2>Join Loyalty</h2>
-   <form action="/api/wallet/register" method="POST">
+<form action="${ORIGIN}/api/wallet/register" method="POST">
   <input type="hidden" name="business_id" value="${businessId}"/>
   <label>Name</label>
   <input type="text" name="name" required placeholder="Your name"/>
