@@ -119,9 +119,13 @@ router.get("/generate/:customerId", async (req, res) => {
     // 3) Barkodi/QR – mund ta përdorësh për scan në dyqan (lexo serial apo mesazh custom)
     pass.barcodes = [
       {
-        message: serialNumber,             // lexon serialin unik
-        format: "PKBarcodeFormatQR",
-        messageEncoding: "iso-8859-1",
+        message: JSON.stringify({
+  customer_id: c.customer_id,
+  business_id: c.business_id
+}),
+format: "PKBarcodeFormatQR",
+messageEncoding: "utf-8"
+
       },
     ];
 

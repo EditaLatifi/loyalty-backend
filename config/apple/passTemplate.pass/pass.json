@@ -26,11 +26,12 @@
     ]
   },
 
-  "barcode": {
-    "message": "LOYALTY-123456",
-    "format": "PKBarcodeFormatQR",
-    "messageEncoding": "iso-8859-1"
-  },
+ "barcode": {
+  "message": "{\"customer_id\":123,\"business_id\":3}",
+  "format": "PKBarcodeFormatQR",
+  "messageEncoding": "utf-8"
+}
+,
 
   "locations": [
     {
