@@ -21,7 +21,7 @@ async function createClass() {
       reviewStatus: "underReview",
   programLogo: {
   sourceUri: {
-    uri: "http://localhost:5000/logo.png"
+    uri: "https://loyalty-backend-mu.vercel.app/logo.png"
   }
 }
 

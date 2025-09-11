@@ -169,7 +169,7 @@ router.get('/generate-wallet-link/:business_id', async (req, res) => {
 
   // Create dummy serial (replace with real wallet generation if needed)
   const serial = `wallet-${Date.now()}`;
-const walletLink = `http://localhost:5000/wallet.html?serial=${serial}&business_id=${business_id}`;
+const walletLink = `https://loyalty-backend-mu.vercel.app/wallet.html?serial=${serial}&business_id=${business_id}`;
 
   try {
     const qr = await QRCode.toDataURL(walletLink);
